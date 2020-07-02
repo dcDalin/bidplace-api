@@ -9,14 +9,12 @@
     "clean": "rm -rf build",
     "start": "npm run build && node ./build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
-    "prettier:base": "prettier --parser --single-quote",
-    "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
-    "prettier:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\""
+    "lint": "eslint ."
   },
   "lint-staged": {
-    "src/**/*.{js}": [
-      "eslint . --fix"
+    "./src/*.{js,jsx,ts,tsx}": [
+      "npx prettier --write",
+      "eslint src/*.js --fix-dry-run"
     ]
   },
   "husky": {
@@ -44,6 +42,7 @@
     "@babel/preset-env": "^7.10.4",
     "@babel/runtime": "^7.10.4",
     "eslint": "^7.3.1",
+    "eslint-config-airbnb": "^18.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
